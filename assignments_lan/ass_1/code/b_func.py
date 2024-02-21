@@ -135,7 +135,7 @@ def count_mfof(fp, ext = ["NOUN","VERB","ADJ","ADV"], el =["PERSON","GPE","ORG"]
     dict_list_list = []
     #get count out of the file
     for i in fp_s: 
-        extract_array = count_ofof(fp = fp + i, extract_this = ext, ent_extract = el, clean_metadata = cm)
+        extract_array = count_ofof(fp = fp + i, extract_this = ext, ent_list = el, clean_metadata = cm)
         extract_dict = dict_it(extract_array)
         #add filename to each dict in list to prevent confusion on where the data came from
         for j in extract_dict:

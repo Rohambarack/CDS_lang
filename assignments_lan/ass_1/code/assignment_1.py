@@ -18,16 +18,17 @@ import b_func as bf
 ############################# CODE
 #set input filepath
 fp = os.path.join("..","in")
+fp = "/work/lang_anal/CDS_lang/assignments_lan/ass_1/in/"
 
 #get all files and count POSs
 c_pos = bf.count_mfmf(fp)
 
 #Format values to table for all files in a table, and saving in separate csv files
 #for all folders
-for j in range(0,len(test_2)):
+for j in range(0,len(c_pos)):
     cter = len(j)
     #for all files
-    for i in test_2[j]:
+    for i in c_pos[j]:
         if cter == len(j):
             df_perm = bf.table_format(i)
         elif cter > 1 :
