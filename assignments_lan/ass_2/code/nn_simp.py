@@ -21,7 +21,12 @@ fp = os.path.join("in","fake_or_real_news.csv")
 train_l, test_l = bf.preprocDF_2(fp, text="text",label="label")
 
 #define classifier
-classifier = LogisticRegression(random_state=42).fit(train_l[0], train_l[1])
+classifier = MLPClassifier(activation = "logistic",
+                           hidden_layer_sizes = (20,),
+                           max_iter=1000,
+                           random_state = 42).fit(train_l[0],train_l[1])
+
+
 #predict
 prediction = classifier.predict(test_l[0])
 #conf_matrix
@@ -30,9 +35,9 @@ cm = np.array2string(metrics.confusion_matrix(test_l[1],prediction))
 cr = metrics.classification_report(test_l[1], prediction)
 
 #save output
-f = open('out/log_report.txt', 'w')
-f.write('Logistic Classifier output\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n'.format(cr, cm))
+f = open('out/nn_report.txt', 'w')
+f.write('NN Classifier output\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n'.format(cr, cm))
 f.close()
 
 from joblib import dump, load
-dump(classifier, "models/Log_reg.joblib")
+dump(classifier, "models/nn.joblib")
