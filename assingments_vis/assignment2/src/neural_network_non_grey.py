@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 
 #functions
-import logistic_reg_grey as lrg
+import logistic_reg_non_grey as lrg
 
 # Machine learning 
 from sklearn.linear_model import LogisticRegression
@@ -18,16 +18,16 @@ from tensorflow.keras.datasets import cifar10
 def main():
     #data
     (X_train, y_train), (X_test, y_test) = cifar10.load_data()
-    #preprocess, grayscale, normalize. bins are set to 64, maybe less is more?
-    X_train_normalized_grey =[]
+   #preprocess, normalize, pu color channel histoggrams after oneanother. bins are set to 64, maybe less is more?
+    X_train_ch3 =[]
     for image in X_train:
-        temp_norm_im = lrg.grey_normalize_image(image, bins = 64)
-        X_train_normalized_grey.append(temp_norm_im)
+        temp_norm_im = lrg.ch3_normalize_image(image, bins = 64)
+        X_train_ch3.append(temp_norm_im)
 
-    X_test_normalized_grey =[]
+    X_test_ch3 =[]
     for image in X_test:
-        temp_norm_im = lrg.grey_normalize_image(image,bins = 64)
-        X_test_normalized_grey.append(temp_norm_im)
+        temp_norm_im = lrg.ch3_normalize_image(image,bins = 64)
+        X_test_ch3.append(temp_norm_im)
     
     #classifier
     classifier  = MLPClassifier(activation = "logistic",
@@ -36,18 +36,18 @@ def main():
                            random_state = 42)
     
     
-    classifier.fit(X_train_normalized_grey, y_train)
+    classifier.fit(X_train_ch3, y_train)
 
 
     #predict
-    prediction = classifier.predict(X_test_normalized_grey)
+    prediction = classifier.predict(X_test_ch3)
     #conf_matrix
     cm = np.array2string(metrics.confusion_matrix(y_test,prediction))
     #report
     cr = metrics.classification_report(y_test, prediction)
 
     #save output
-    f = open('../out/NN_grey_report.txt', 'w')
+    f = open('../out/NN_non_grey_report.txt', 'w')
     f.write('Neural Network Classifier output\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n'.format(cr, cm))
     f.close()
 
