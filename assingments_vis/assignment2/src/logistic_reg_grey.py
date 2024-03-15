@@ -4,8 +4,7 @@ import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
-import Argparse     
+import pandas as pd    
 
 # Machine learning 
 from sklearn.linear_model import LogisticRegression
@@ -29,43 +28,6 @@ def grey_normalize_image(image,bins = 255):
 
 
     return(normalized_hist)
-
-def ch3_normalize_image(image,bins = 255):
-
-    """ function for an image file, taking it's color histograms and normailizing them. """
-    color_histogram_list = []
-    for channel in range(0,3):
-
-        #normalize
-        hist = cv2.calcHist([image],[channel],None,[bins],[0,256])
-        normalized_hist = cv2.normalize(hist, hist, 0, 1.0, cv2.NORM_MINMAX)
-        #squeeze a dimension out
-        normalized_hist = np.squeeze(normalized_hist)
-        color_histogram_list.append(normalized_hist)
-    
-    #make it one array
-    color_histogram = np.concatenate(np.array(color_histogram_list))
-
-
-    return(color_histogram)
-
-def color_profile():
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("--color_profile",
-                        "-c_p",
-                        required = True,
-                        help = "0 for greyscale, 1 to keep colors channels")
-    
-    parser.add_argument("--bin_size",
-                        "-b_s",
-                        required = True,
-                        help = "How many bins should the color hostograms have. Int value, max 256.")
-
-    args = parser.parse_args()
-
-    return args
-
 
 def main():
     #data
@@ -91,7 +53,7 @@ def main():
     cr = metrics.classification_report(y_test, prediction)
 
     #save output
-    f = open('../out/log_report.txt', 'w')
+    f = open('../out/log_grey_report.txt', 'w')
     f.write('Logistic Classifier output\n\nClassification Report\n\n{}\n\nConfusion Matrix\n\n{}\n'.format(cr, cm))
     f.close()
 
