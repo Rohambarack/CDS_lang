@@ -14,37 +14,39 @@ from sklearn import metrics
 from tensorflow.keras.datasets import cifar10
 
 #functions
-def grey_normalize_image(image,bins = 255):
+def grey_normalize_image(image):
 
-    """ function for greyscaling in an image file, taking it's color histogram and normailizing it. """
+    """ function for greyscaling in an image file, and normailizing it. """
     #greyscale
     greyed_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     #normalize
-    hist = cv2.calcHist([greyed_image],[0],None,[bins],[0,256])
-    normalized_hist = cv2.normalize(hist, hist, 0, 1.0, cv2.NORM_MINMAX)
-    #squeeze a dimension out
+    normalized = greyed_image/255.0
+    #reshape
+    normalized = normalized.reshape(-1, 1024)
+    #squeeeze out a dimension
+    normalized = np.squeeze(normalized)
 
-    normalized_hist = np.squeeze(normalized_hist)
 
-
-    return(normalized_hist)
+    return(normalized)
 
 def main():
     #data
     (X_train, y_train), (X_test, y_test) = cifar10.load_data()
-    #preprocess, grayscale, normalize. bins are set to 64, maybe less is more?
+    #preprocess, grayscale, normalize.
     X_train_normalized_grey =[]
     for image in X_train:
-        temp_norm_im = grey_normalize_image(image, bins = 64)
+        temp_norm_im = grey_normalize_image(image)
         X_train_normalized_grey.append(temp_norm_im)
 
     X_test_normalized_grey =[]
     for image in X_test:
-        temp_norm_im = grey_normalize_image(image,bins = 64)
+        temp_norm_im = grey_normalize_image(image)
         X_test_normalized_grey.append(temp_norm_im)
     
-    #classifier
-    classifier = LogisticRegression(random_state=42).fit(X_train_normalized_grey, y_train)
+    classifier = LogisticRegression(tol=0.1, 
+                         solver='saga',
+                         multi_class='multinomial',
+                         random_state = 42).fit(X_train_normalized_grey, y_train)
     #predict
     prediction = classifier.predict(X_test_normalized_grey)
     #conf_matrix
