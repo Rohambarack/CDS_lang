@@ -1,7 +1,12 @@
 # Building a simple image search algorithm
 
 ## IMPORTANT
-Before running any of the assignments Please run ../setup/setup.sh in the to ensure the virtual environment with the necessary python libraries is setup
+Before running any of the assignments Please run the following sh scripts:
+../setup/create_venv.sh to ensure the virtual environment is created
+then type source ../Visual_venv/bin/activate into the terminal to activate it
+then run ../setup/setup.sh to install necessary libraries
+
+in case ../setup/setup.sh is not working, all the packages used in making the assignments can be found in requirements.txt
 
 ## Assignment Description:
 For this assignment, you'll be using ```OpenCV``` to design a simple image search algorithm.
