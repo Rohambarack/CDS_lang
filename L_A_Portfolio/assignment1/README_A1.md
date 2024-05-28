@@ -86,9 +86,27 @@ creates a few plots regarding how the writing of students in the data changes ov
 # 4 small analyisis 
 In the data "a" essays are produced in the first term, "b" in the second, "c" in the third.
 
+Some interesting findings from plotting the data by different semesters.
+These are only based on looking at plots, more in depth results could be achieved by statistical models. 
+
+- Number of words
+![Alt text](./plots/N_WORDS.png)
+As time passes some difference can be seen in the length of essays. Semester "C" is clearly a different distribution, but the elongated tail of "b" also suggests, that as time passes students produce longer written texts.
+![Alt text](./plots/No.%20Unique%20PER.png)
+In the same fashion, students seem to write more about People as the semesters pass.
+
+![Alt text](./plots/RelFreq%20ADJ.png)
+To me was surprising to see the frequency of adjectives drop by semester "c". 
+My intuition is that adjectives usually describe and decorate actions, objects, subjects, etc. and as the speaker becomes more and more proficient, their language use should become more colorful and vivid. Especially considering the large increase in People being mentioned in those essays, it seems they are only being mentioned but not described. Maybe semester "c" essays are more report focused rather then opinion based? It seems logical, that an impartial, objective assessment of historical or political events would contain less adjectives, than something subjective and opinion based.
+
+
+It is important to note the data is imbalanced, there are less data from semester "c", than the other two, which could influence findings.
+
+The exact criteria for the essays is also not investigated. For example semester "c" papers might not be longer because students became more proficient in English, maybe the required minimal word count was simply higher for those, so students had to write more. Or semester "c" essays might have more People mentioned, because the topic of the essays were People, so students were forced to name more.
+
 
 # X. Assignment 5 
-To read more on possible carbon emission due to running the project, see Assingment_5
+To read more on possible carbon emission due to running the project, see assignment5
 
 
 

@@ -1,0 +1,12 @@
+Neural Network output
+
+Classification Report
+
+              precision    recall  f1-score   support
+
+        FAKE       0.89      0.91      0.90       644
+        REAL       0.90      0.88      0.89       623
+
+    accuracy                           0.90      1267
+   macro avg       0.90      0.90      0.90      1267
+weighted avg       0.90      0.90      0.90      1267

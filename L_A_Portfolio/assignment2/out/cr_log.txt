@@ -1,0 +1,12 @@
+Logistic Classifier output
+
+Classification Report
+
+              precision    recall  f1-score   support
+
+        FAKE       0.89      0.89      0.89       644
+        REAL       0.89      0.88      0.88       623
+
+    accuracy                           0.89      1267
+   macro avg       0.89      0.89      0.89      1267
+weighted avg       0.89      0.89      0.89      1267
