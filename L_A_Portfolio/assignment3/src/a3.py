@@ -103,7 +103,7 @@ class Extended_Query:
         - n_embed: additional query extensions based on proximity in the embedding model"""
         #subset
         singer = self.artist
-        sub_data = self.data.loc[self.data['artist'] == singer]
+        sub_data = self.data.loc[self.data['artist'] == singer].reset_index(drop=True)
         #embed
         query_word = self.q_word
         n_similar = self.n_embeds
@@ -188,7 +188,7 @@ def main():
     a3_load = tracker.start_task("load")
 
     args = input_parser()
-    model = api.load("glove-wiki-gigaword-50")
+    model = api.load("glove-wiki-gigaword-300")
     #data
     data_name = args.data
     data_path = os.path.join("..","in",data_name)
