@@ -5,3 +5,5 @@ python -m spacy download en_core_web_md
 pip install scikit-learn numpy
 #a3
 pip install gensim
+#a4
+pip install torch transformers
