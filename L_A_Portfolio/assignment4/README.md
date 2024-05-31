@@ -1,6 +1,10 @@
 
 # IMPORTANT
-before running any of the code run ../setup/setup.sh to load necessary packages.
+First: run setup/create_venv.sh to create a visual environment
+Second: activate it (from the setup folder) source ../Language_venv/bin/activate
+Third:  run the setup.sh to install necessary packages.
+
+In case it is not working the full list of used packages and version can be viewed in setup/requirements.txt
 
 # Assignment 4 - Emotion analysis with pretrained language models
 

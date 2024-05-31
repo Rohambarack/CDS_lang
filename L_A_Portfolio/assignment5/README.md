@@ -1,3 +1,10 @@
+# IMPORTANT
+First: run setup/create_venv.sh to create a visual environment
+Second: activate it (from the setup folder) source ../Language_venv/bin/activate
+Third:  run the setup.sh to install necessary packages.
+
+In case it is not working the full list of used packages and version can be viewed in setup/requirements.txt
+
 # Assignment 5 - Evaluating environmental impact of your exam portfolio
 
 In the lecture and code along session, we were introduced to CodeCarbon which allows to track the impact of our code in various different ways. The main contribution of this package is that we end up with an approximate value for CO₂ emissions expressed as kilograms of CO₂-equivalent (CO₂eq).
@@ -66,6 +73,13 @@ Here the code could be separated into 4 different parts for both classifiers:
 The same 4 task structure could be measured here as well.
 
 ![Alt text](plots/a3.png)
+
+# Important
+First: run setup/create_venv.sh to create a visual environment
+Second: activate it (from the setup folder) source ../Language_venv/bin/activate
+Third:  run the setup.sh to install necessary packages.
+
+In case it is not working the full list of used packages and version can be viewed in setup/requirements.txt
 
 # Assignment4
 As most outputs here were plots, which are easier to immediately save, the analysis and save parts are not clearly distinguishable.
